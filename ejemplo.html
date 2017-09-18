@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
+	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+	
+	<title></title>
+</head>
+<body>
+
+	<div id="contenedor">
+	
+		<form name="form1">
+			<input type="text" name="nombre" value="input 1-0"/>
+			<input type="text" name="descripcion" value="input 1-1"/>
+			<input type="checkbox" name="check" checked/>
+		</form>
+		
+		<form name="form2">
+			<input type="text" name="nombre" value="input 2-0"/>
+			<input type="text" name="descripcion" value="input 2-1"/>
+			<input type="checkbox" name="check" />
+		</form>
+		
+		<form name="form3">
+			<input type="text" name="nombre" value="input 3-0"/>
+			<input type="text" name="descripcion" value="input 3-1"/>
+			<input type="checkbox" name="check" checked />
+		</form>
+		
+		<input type="button" value="SEND"/>
+		
+	</div>
+	
+	<script>
+		
+		(function ()
+			{
+			var responseData= 
+				[{
+					nombre: "input 1-0",
+					descripcion: "input 1-1"
+				},
+				
+				{
+					nombre: "input 2-0",
+					descripcion: "input 2-1"
+				},
+				{
+					nombre: "input 3-0",
+					descripcion: "input 3-1"
+				}];
+			
+			
+				var data= responseData;
+				var forms = document.forms; 
+				var button = document.querySelector('#contenedor input[type="button"]');
+				var send = []; //Tiene los objetos con sus atributos y valores
+				var properties = []; //Es un array con objetos, Nombre de los atributos y valores
+				
+				getProperties (data[0]); //¿¿porque data [0] en vez de solo data
+				
+				console.log(data);
+				
+				button.addEventListener('click', function (e) 
+														{
+					
+															findForms();
+															//console.log(send[2]);
+															for (var i=0, max = send.length; i < max; i++)
+															{
+//  																console.log("-->" + JSON.stringify(send[i]));
+ 																
+															}
+															send.length = 0; //Inicializamos variable a 0 para que no sume los input
+														});
+				
+				
+				//Funcion que recorre el formulario y si está chequeado se añade a send los input como objeto con sus propiedades
+				function findForms()
+				{
+			
+					for (var i=0, maxi = forms.length; i < maxi; i++)
+					{
+						
+						if (forms[i].check.checked)
+							{
+								var obj= {};
+								
+								for (var j=0, maxj = properties.length; j < maxj; j++)
+									{
+									
+										
+										var propiedad = properties[j].clave; //nombre o descripcion
+// 										console.log(properties[0].clave);
+										
+										obj[propiedad] = forms[i][propiedad].value //valor de cada atributo
+// 										console.log(forms[i][propiedad].value);
+										
+									
+									}
+								
+								send.push(obj);
+								
+							}
+						
+					}
+				
+				}
+				
+				
+				
+				//Funcion para obtener los nombres de los atributos y sus valores de un objeto
+				function getProperties (obj)
+				{
+					for (var atrib in obj) 
+						{
+// 							console.log(atrib); //imprime los nombre(clave) de los atributos
+// 							console.log(obj[atrib]); //imprime los valores(valor) de los atributos
+							
+							properties.push(
+											 {
+												 clave: atrib,
+												 valor: obj[atrib]
+											 });
+								
+						}
+				}
+				
+				
+				//Genera un formulario a partir de un Json
+				for (var p=0, maxp = data.length; p < maxp; p++)
+					{
+ 												
+// 						console.log(data.length);
+						for (var x=0, maxx = properties.length; x < maxx; x++)
+							{
+
+								var propiedad = properties[x].clave; //nombre o descripcion
+// 								var v= data[p].propiedad.value // undefined
+ 								var v2 = data[p][propiedad]; //funciona
+								
+// 								console.log (v);
+							
+   								console.log("<form="+ p+"/><input name="+propiedad +" "+"value="+v2+"/>");
+ 							
+							}
+							
+						
+					}
+				
+				
+				
+				
+				
+				
+			
+			})();
+		
+		
+	</script>
+	
+</body>
+</html>
