@@ -72,7 +72,7 @@
 															//console.log(send[2]);
 															for (var i=0, max = send.length; i < max; i++)
 															{
-//  																console.log("-->" + JSON.stringify(send[i]));
+ 																console.log("-->" + JSON.stringify(send[i]));
  																
 															}
 															send.length = 0; //Inicializamos variable a 0 para que no sume los input
@@ -140,12 +140,12 @@
 							{
 
 								var propiedad = properties[x].clave; //nombre o descripcion
-// 								var v= data[p].propiedad.value // undefined
- 								var v2 = data[p][propiedad]; //funciona
+// 								var v= data[p].propiedad.value // No funciona porque busca literalmente 'propiedad' en data
+ 								var v2 = data[p][propiedad]; //Hay que ponerlo así por sintaxis del Json, así sí busca en data el valor de propiedad (nombre o descripcion)
 								
 // 								console.log (v);
 							
-   								console.log("<form="+ p+"/><input name="+propiedad +" "+"value="+v2+"/>");
+//    								console.log("<form="+ p+"/><input name="+propiedad +" "+"value="+v2+"/>");
  							
 							}
 							
