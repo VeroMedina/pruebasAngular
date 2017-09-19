@@ -31,7 +31,7 @@
 			<input type="checkbox" name="check" checked />
 		</form>
 		
-		<input type="button" value="SEND"/>a
+		<input type="button" value="SEND"/>
 		
 	</div>
 	
@@ -63,7 +63,7 @@
 				
 				getProperties (data[0]); //¿¿porque data [0] en vez de solo data
 				
-				console.log(data);
+				
 				
 				button.addEventListener('click', function (e) 
 														{
@@ -72,7 +72,7 @@
 															//console.log(send[2]);
 															for (var i=0, max = send.length; i < max; i++)
 															{
- 																console.log("-->" + JSON.stringify(send[i]));
+//  																console.log("-->" + JSON.stringify(send[i]));
  																
 															}
 															send.length = 0; //Inicializamos variable a 0 para que no sume los input
@@ -132,7 +132,9 @@
 				
 				
 				//Genera un formulario a partir de un Json
-				for (var p=0, maxp = data.length; p < maxp; p++)
+				(function row ()
+				{
+					for (var p=0, maxp = data.length; p < maxp; p++)
 					{
  												
 // 						console.log(data.length);
@@ -145,12 +147,13 @@
 								
 // 								console.log (v);
 							
-//    								console.log("<form="+ p+"/><input name="+propiedad +" "+"value="+v2+"/>");
+   								console.log("<form="+ p+"/><input name="+propiedad +" "+"value="+v2+"/>");
  							
 							}
-							
 						
 					}
+				
+				})();
 				
 				
 				
