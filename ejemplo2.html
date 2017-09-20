@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
+	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+	
+	<title></title>
+</head>
+<body>
+
+		
+	<script>
+	
+	
+// 		(function ()
+				
+// 			{
+// 				var array= [1,3,2];
+// 				var rdo=0;
+// 				for (var i=0, maxi = array.length; i < maxi; i++)
+// 				{
+// 					var actual = array[i];
+					
+// 					if(actual > rdo)
+// 					{
+// 						rdo = actual;
+// 					}
+					
+				
+				
+// 				}
+// 				console.log(rdo);
+		
+		
+// 			})();
+		
+	
+	
+		
+		(function ()
+			{
+			var responseData= 
+				[{
+					nombre: "Vero",
+					apellido1: "Medina"
+				},
+				
+				{
+					apellido2: "Alcántara",
+					edad: "27",
+					sexo: "Mujer"
+				}];
+			
+			
+				var data= responseData;
+				
+				
+// 				var maxProp = 0;
+// 				var miMax = 0;
+				
+				
+// 				for (var h=0, maxh = data.length; h < maxh; h++)
+// 				{
+					
+					
+// 					for (var atrib in data[h]) 
+// 						{
+// // 							console.log(atrib);
+							
+// 							maxProp++;
+							
+// 							if (maxProp>miMax)
+// 							{
+// 								miMax = maxProp;
+// 							}
+						
+// 						}
+// // 						console.log(miMax);
+					
+// 						maxProp = 0;
+						
+// 				}
+				
+
+				
+// 				for (var p=0, maxp = miMax; p < maxp; p++)
+// 				{
+// 					console.log("Propiedad"+[p]+"=" +"adsfa");
+					
+// 				}	
+				
+//***************************************************************************************				
+ 
+				
+				var model={};
+				
+				//Se crea modelo para crear objetos semejantes a ese modelo (objetos con los mismos atributos)
+				for (var h=0, maxh = data.length; h < maxh; h++)
+ 				{
+ 					console.log("----------------" +h);
+
+					for (var atrib in data[h]) 
+						{
+							
+							model[atrib] = data[h][atrib]; //clave - valor
+							
+						}
+					
+				}
+				
+				
+				console.log(model);
+				
+				var array=[];
+				
+				for (var i=0, maxi = data.length; i < maxi; i++)
+				{
+					var obj={};
+					
+					for(var item in model)
+						{
+							var bool = false;
+							
+							for (var attr in data[i]) 
+							{
+								if(item === attr)
+									{
+										console.log("si");
+										bool = true;
+									}
+							}
+							
+							obj[item] =(bool)? data[i][item] : null;
+						}
+					
+					array.push(obj);
+				}
+				
+				console.log(JSON.stringify(array));
+				
+				
+// 				function getProperties (obj)
+// 				{
+// 					for (var atrib in obj) 
+// 						{
+// // 							console.log(atrib); //imprime los nombre(clave) de los atributos
+// // 							console.log(obj[atrib]); //imprime los valores(valor) de los atributos
+							
+// 							properties.push(
+// 											 {
+// 												 clave: atrib,
+// 												 valor: obj[atrib]
+// 											 });
+								
+// 						}
+// 				}
+				
+			
+			})();
+		
+		
+		
+		
+	</script>
+	
+</body>
+</html>
